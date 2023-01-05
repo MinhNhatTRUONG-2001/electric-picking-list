@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="detail_files/detail.css">
+</head>
+<body>
+    <header><b>PRODUCT DETAILS</b></header>
+    <div class="info"><b>Order ID:</b> <span id="oid"></span></div>
+    <div class="info"><b>Customer ID:</b> <span id="cid"></span></div>
+    <div class="info"><b>Customer name:</b> <span id="cus"></span></div>
+    <div class="info"><b>Invoicing address:</b> <span id="inv"></span></div>
+    <div class="info"><b>Delivery address:</b> <span id="del"></span></div>
+    <div class="info"><b>Delivery date:</b> <span id="dat"></span></div>
+    <div class="info"><b>Responsible salesperson:</b> <span id="res"></span></div>
+    <div class="info"><b>Comment:</b> <span id="cmt"></span></div>
+    <div class="info"><b>Total price:</b> <span id="tot"></span></div>
+    <br>
+    <span id="tableOfProducts"></span>
+    <br>
+    <fieldset id="insertComments">
+        <legend>Product comments</legend>
+        <p>Instruction: Write a product code (the 2nd column), write your corresponding 
+            comment and click "Insert comment" to add comment to the table above</p>
+        <label for="chosenCode">Product code: </label>
+        <input type="text" id="chosenCode">
+        <br><br>
+        <label for="yourCmt">Comment: </label>
+        <input type="text" id="yourCmt" size="100px">
+        <br><br>
+        <input type="button" value="Insert comment" onclick="insertComments()">
+    </fieldset>
+    <br>
+    <button type="button" id="printButton" title="If you checked all products, click 
+    this button to print" onclick="printOrder()">Ready</button>
+    <footer>
+        <div class="row">
+            <div class="col-12">
+                <div>@ NHV team 2020</div>
+                <div>Vaasa University of Applied Sciences</div>
+            </div>
+        </div>
+    </footer>
+    <script src="detail_files/detail.js"></script>
+</body>
+</html>

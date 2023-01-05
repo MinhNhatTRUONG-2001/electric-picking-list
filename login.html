@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="./login_files/project.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Login to NHV order management</title>
+
+
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .hero-image {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/machines.png");
+      height: 500px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    .hero-text {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+    }
+
+    .hero-text button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 10px 25px;
+      color: black;
+      background-color: #ddd;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .hero-text button:hover {
+      background-color: #555;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header">
+      <h1>Project from the course "Introduction to programming"</h1>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="hero-image">
+          <div class="hero-text">
+            <h1 style="font-size:50px">Login</h1>
+            <label>
+              Username
+              <input type="text" id="usern" name="usern">
+            </label>
+            <br>
+            <br>
+            <label>
+              Password
+              <input type="password" id="pwd" name="pwd">
+            </label>
+            <br>
+            <br>
+            <label>
+              <button onclick="MyFunction()">Login</button>
+            </label>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="row">
+      <div class="col-12">
+        <p>@ NHV team 2020</p>
+        <p>Vaasa University of Applied Sciences</p>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+  
+  function MyFunction() {
+    fetch('http://www.cc.puv.fi/~e2000606/Final_project/fetch_resources/user.json')
+      .then((res) => res.json())
+      .then(output => {
+
+        var data = output;
+        console.log(data);
+        var i;
+        var notAnAccount = 0;
+        var user = document.getElementById("usern").value;
+        var pass = document.getElementById("pwd").value;
+        for (i in data) {
+          if (user == data[i].username && pass == data[i].password) {
+            window.open('product.html', '_self');
+          }
+          else {
+            notAnAccount++;
+          }
+        }
+        if (notAnAccount == 3) {
+          alert("Invalid username or password");
+        }
+      }
+      )
+  }
+</script>
+
+</body></html>
